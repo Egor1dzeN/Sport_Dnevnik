@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    min-width: 950px;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #00F2F2, #FA00CC) fixed;
+}
+.background_login{
+    margin: 5px auto 5px;
+    width: 30%;
+    background: #ffffff;
+    text-align: center;
+    padding: 50px 30px;
+}
+#text1{
+    font-size: 50px;
+    font-family: "Noto Sans";
+    font-weight: bold;
+}
+.login{
+    margin-top: 50px;
+}
+input{
+    height: 40px;
+    font-family: "Noto Sans";
+    border-radius: 10px;
+    padding-left: 5px;
+    width: 250px;
+}
+.password{
+    margin-top: 20px;
+}
+.btn_login{
+    text-align: center;
+    margin-top: 20px;
+    width: 250px;
+    margin-left: auto ;
+    margin-right: auto ;
+    background: linear-gradient(to top right, #00F2F2, #FA00CC);
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    font-family: "Noto Sans";
+    padding-top: 18px;
+    font-weight: bold;
+}
+.reg{
+    margin-top: 20px;
+    text-align: center;
+    font-family: "Noto Sans";
+}
+.reg b{
+    color: #279d9d;
+}
+.reg b:hover{
+    cursor: pointer;
+}
+#back:hover{
+    cursor: pointer;
+}
+input:focus:invalid{
+    border-color: #a21e1e;
+    color: #e31515;
+}
+input:valid{
+    border-color: #000000;
+}
+input:focus:valid{
+    border-color: #ffffff;
+}
+input:invalid{
+    border-color: #f80000;
+    border-width: 2px;
+    color: #a21e1e;
+    background-color: #f1d8db;
+}
+.birthday{
+    display: block;
+    position: relative;
+    width: max-content;
+    left: 70px;
+    top: 10px;
+    background-color: #ffffff;
+    font-family: "Noto Sans", serif;
+    padding: 0 5px;
+}
+.btn_login_{
+    display: block;
+    background-color: rgba(256,256,256,0);
+    border: 0;
+    font-family: "Noto Sans";
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+.btn_login_:hover{
+    cursor: pointer;
+}
+.border_t{
+    padding-bottom: 20px;
+    border-bottom: black 2px solid;
+}

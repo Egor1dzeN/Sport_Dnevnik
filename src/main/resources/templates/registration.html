@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <link rel="stylesheet" href="css/login_style.css">
+  <script src="css/reg.js"></script>
+</head>
+<body>
+<div class="background_login">
+  <div style="height: 80px;" id="back">
+    <div style="float: left;">
+      <img src="css/back.png" width="50px" height="50px">
+    </div>
+  </div>
+  <span id="text1">Registration</span>
+  <form action="/reg" method="post">
+    <div class="login">
+      <input type="email" name="email" placeholder="Email" id="email"  pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" required oninvalid="this.setCustomValidity('Заполните поле: email')">
+    </div>
+    <div class="password" onclick="setCursor()">
+      <input type="text" name="phone_number" placeholder="Phone Number"  id="phone-number" oninput="changePhoneNumber(this)" required>
+    </div>
+    <div class="password">
+      <input type="password" name="password1 " placeholder="Password" id="pass1" oninput="changePass1()" required>
+    </div>
+    <div class="password border_t">
+      <input type="password" name="password2" placeholder="Password again" oninput="changePass2()" id="pass2" required>
+    </div>
+    <div class="password">
+      <input type="text" name="name" placeholder="Name" required onkeypress="noDigits(event)">
+    </div>
+    <div class="password">
+      <input type="text" name="surname" placeholder="Surname" required onkeypress="noDigits(event)">
+    </div>
+
+    <div class="password" >
+      <label class="birthday">Birthday</label>
+      <input type="date" name="birthday" id="date1" required oninvalid="this.setCustomValidity('Напишите дату своего дня рождения')">
+    </div>
+    <div class="btn_login" id="login" onclick="registration()">
+      <button class="btn_login_" type="submit" onclick="test4()">LOGIN</button>
+    </div>
+    <div class="reg" >
+      <span>Not a member? <b>Signup now</b></span>
+    </div>
+  </form>
+</div>
+</body>
+</html>
