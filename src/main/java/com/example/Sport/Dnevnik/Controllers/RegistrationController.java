@@ -51,7 +51,7 @@ public class RegistrationController {
             String message = "Здравствуйте, подтвердите вашу почту нна сайте Sport_Dnevnik для того, чтобы продолжить действия...\n\n" +
                     "Перейдите по ссылке: "+"http://localhost:8080/activate/"+activationCode+"\n\n";
 
-            mailSender.send(email, "subject", "message");
+            mailSender.send(email, subject, message);
         }
 
         return "redirect:/";
