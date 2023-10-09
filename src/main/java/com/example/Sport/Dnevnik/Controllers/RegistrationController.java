@@ -1,6 +1,7 @@
 package com.example.Sport.Dnevnik.Controllers;
 
 import com.example.Sport.Dnevnik.Entity.User;
+import com.example.Sport.Dnevnik.service.MailSender;
 import com.example.Sport.Dnevnik.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,8 @@ public class RegistrationController {
 
     @Autowired
     private UserService userService;
-    //@Autowired
-//    MailSender mailSender;
+    @Autowired
+    MailSender mailSender;
 
     @GetMapping("/reg")
     public String registration(Model model) {
@@ -45,13 +46,13 @@ public class RegistrationController {
             model.addAttribute("error", error);
             return "registration";
         }
-        /*else {
+        else {
             String subject = "Подтверждение почты для Sport_Dnevnik";
-            String message = "Здравтсвуйте, подтвердите вашу почту нна сайте Sport_Dnevnik для того, чтобы продолжить действия...\n\n" +
+            String message = "Здравствуйте, подтвердите вашу почту нна сайте Sport_Dnevnik для того, чтобы продолжить действия...\n\n" +
                     "Перейдите по ссылке: "+"http://localhost:8080/activate/"+activationCode+"\n\n";
 
-            mailSender.send(email, subject, message);
-        }*/
+            mailSender.send(email, "subject", "message");
+        }
 
         return "redirect:/";
     }
