@@ -1,78 +1,36 @@
 package com.example.Sport.Dnevnik.Entity;
 
-
-
+import com.example.Sport.Dnevnik.Entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 @Entity
-@Table(name = "test")
+@Table(name = "sportsmens")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    public User(String username, String email, String password, boolean isSuccessMail, Date birthday, Long imageAvatarId, String name, String surname) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.isSuccessMail = isSuccessMail;
-        this.birthday = birthday;
-        this.imageAvatarId = imageAvatarId;
-        this.name = name;
-        this.surname = surname;
-    }
-
-    public User(Long id, String username, String email, String password, boolean isSuccessMail, Date birthday, Long imageAvatarId, String name, String surname) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.isSuccessMail = isSuccessMail;
-        this.birthday = birthday;
-        this.imageAvatarId = imageAvatarId;
-        this.name = name;
-        this.surname = surname;
-    }
-
-    public User() {
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     private String username;
-
+    private String password;
     private String email;
+    private String activationCode;
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+//
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     public String getEmail() {
         return email;
@@ -82,11 +40,75 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    @Transient
+    private String passwordConfirm;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles = new HashSet<>();
+    private Long previewImageId;
+
+    public Date getActiveDateTime() {
+        return activeDateTime;
     }
 
+    public void setActiveDateTime(Date activeDateTime) {
+        this.activeDateTime = activeDateTime;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date activeDateTime;
+
+    public User() {
+    }
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
     public String getPassword() {
         return password;
     }
@@ -95,61 +117,28 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public boolean isSuccessMail() {
-        return isSuccessMail;
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
-    public void setSuccessMail(boolean successMail) {
-        isSuccessMail = successMail;
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
-    public Long getImageAvatarId() {
-        return imageAvatarId;
+    public Long getPreviewImageId() {
+        return previewImageId;
     }
 
-    public void setImageAvatarId(Long imageAvatarId) {
-        this.imageAvatarId = imageAvatarId;
+    public void setPreviewImageId(Long previewImageId) {
+        this.previewImageId = previewImageId;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    private String password;
-
-    private boolean isSuccessMail = true;
-
-    private Date birthday;
-
-    private Long imageAvatarId;
-    private String name;
-    private String surname;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }
