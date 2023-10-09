@@ -1,6 +1,7 @@
 package com.example.Sport.Dnevnik.Controllers;
 
 
+import com.example.Sport.Dnevnik.Entity.User;
 import com.example.Sport.Dnevnik.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,10 @@ public class ActivationController {
 
     @GetMapping("/activate/{code}")
     public String activationPerson(@PathVariable String code, Model model){
-        System.out.println(code);
+        User user = userRepository.findUserByActivationCode(code);
+        System.out.println(user.getUsername());
+        user.setActivated(true);
+        userRepository.save(user);
         return "redirect:/";
     }
 }

@@ -22,7 +22,7 @@ public class RegistrationController {
     @Autowired
     MailSender mailSender;
 
-    @GetMapping("/reg")
+    @GetMapping("/registration")
     public String registration(Model model) {
         return "registration";
     }
@@ -44,13 +44,15 @@ public class RegistrationController {
         if (!userService.saveUser(user)){
             error = "Пользователь с таким именем уже существует";
             model.addAttribute("error", error);
+            System.out.println("Пользователь не сохранен!");
             return "registration";
         }
         else {
             String subject = "Подтверждение почты для Sport_Dnevnik";
             String message = "Здравствуйте, подтвердите вашу почту нна сайте Sport_Dnevnik для того, чтобы продолжить действия...\n\n" +
-                    "Перейдите по ссылке: "+"http://localhost:8080/activate/"+activationCode+"\n\n";
-
+                    "Перейдите по ссылке: "+"http://localhost:8080/activate/"+activationCode+"\n\n" +
+                    "<a <a href=\\\"http://example.com\\\">></a>";
+            System.out.println(email);
             mailSender.send(email, subject, message);
         }
 

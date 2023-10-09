@@ -17,6 +17,15 @@ public class User implements UserDetails {
     private String password;
     private String email;
     private String activationCode;
+    private boolean activated;
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
 
     public String getActivationCode() {
         return activationCode;

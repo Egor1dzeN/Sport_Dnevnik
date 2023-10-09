@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -16,7 +16,9 @@
     <input type="text" name="username" placeholder="Username" required="required" />
     <input type="password" name="ps1" placeholder="Password" required="required" />
     <input type="password" name="ps2" placeholder="Password again" required="required" />
+    <span th:text="${error}" style="color: #e31515"></span><br>
     <button type="submit" class="btn btn-primary btn-block btn-large">Зарегестрироваться</button>
+
   </form>
   <h5 onclick="window.history.go(-1);document.location.href='/login'">Войти</h5>
 </div>
