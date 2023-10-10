@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/login_style.css}" rel="stylesheet">
 </head>
 <body>
 Log in
-<span th:text="   ${name}"></span>
+<span th:text="${user.getUsername()}"></span>
 <a href="/logout">Sign out</a><br>
+<form th:action="'/account/'+${user.getId()}">
+    <input type="submit" value="Личный кабинет" />
+</form>
 <form action="/add_training">
     <input type="submit" value="Добавить тренировку!" />
 </form>
+<input type="time" step="1">
+<input type="date">
 
 
 </body>

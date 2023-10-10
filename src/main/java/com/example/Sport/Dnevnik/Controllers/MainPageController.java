@@ -22,7 +22,7 @@ public class MainPageController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(!(auth instanceof AnonymousAuthenticationToken)){
             User user = userService.is_login();
-            model.addAttribute("name", user.getUsername());
+            model.addAttribute("user", user);
             return "main_login";
         }
         return "main_no_login";

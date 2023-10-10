@@ -6,10 +6,15 @@
 </head>
 <body>
 <form action="/add_training" method="post">
-  <input type="text" name="name_training" placeholder="Введите название тренировки"><br>
-  <textarea name="description" placeholder="Описание тренировки" ></textarea><br>
-  <input type="number" step="0.01" name="distance" placeholder="Дистанция" value="0.0" required>км<br>
-  <input type="submit" value="Заполнить">
+    <input type="text" name="name_training" placeholder="Введите название тренировки"><br>
+    <textarea name="description" placeholder="Описание тренировки"></textarea><br>
+    <input type="number" step="0.01" name="distance" placeholder="Дистанция" value="0.0" required>км<br>
+    <input type="time" step="1" name="duration" required><br>
+    <input type="date" id="date"  name="date" required><br>
+    <input type="submit" value="Заполнить">
 </form>
 </body>
+<script>
+    document.getElementById('date').valueAsDate = new Date();
+</script>
 </html>

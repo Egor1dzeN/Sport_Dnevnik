@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${username}"></title>
+</head>
+<body>
+<div th:each="training :${trainings}" style="border: 1px solid red">
+    <span th:text="${training.getName_training()}"></span>
+    <span th:text="${training.getDescription()}"></span>
+    <span th:text="${training.getDistance()}"></span>
+</div>
+</body>
+</html>
