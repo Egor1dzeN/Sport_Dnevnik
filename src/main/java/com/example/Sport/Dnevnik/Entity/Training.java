@@ -22,9 +22,19 @@ public class Training {
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    public Training(User user, Date duration, Date date, String name_training, String description, double distance) {
+        this.user = user;
+        this.duration = duration;
+        this.date = date;
+        this.name_training = name_training;
+        this.description = description;
+        this.distance = distance;
+    }
+
     public Date getDuration() {
         return duration;
     }
+
 
     public void setDuration(Date duration) {
         this.duration = duration;
