@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Group</title>
+</head>
+<body>
+<form action="/create_group">
+    <input type="submit" value="Создать группу">
+</form>
+<h1>Список доступных групп: </h1>
+<div th:each="group:${list_groups}" style="border: 1px solid red">
+    <h2 th:text="${group.getName_group()}"></h2>
+    <span th:text="${group.getDescription()}"></span>
+    <span th:text="${group.getStatus()}"></span>
+</div>
+</body>
+</html>

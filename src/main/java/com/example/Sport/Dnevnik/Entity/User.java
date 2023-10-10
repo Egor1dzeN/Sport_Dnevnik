@@ -1,6 +1,5 @@
 package com.example.Sport.Dnevnik.Entity;
 
-import com.example.Sport.Dnevnik.Entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
